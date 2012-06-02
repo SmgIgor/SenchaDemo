@@ -1,51 +1,74 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Site.master.cs" Inherits="SiteMaster" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
-<head runat="server">
+<!DOCTYPE HTML>
+<html lang="en" class="no-js">
+<head id="Head1" runat="server">
+	<meta http-equiv="X-UA-Compatible" content="IE=9;FF=3;OtherUA=4" >
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+    <meta charset="utf-8"/>
+    	<meta name="copyright" content="Copyright 2012" >
+		
+	<meta name="robots" content="index,follow" >
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+	<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+				
+	<!-- HTML 5 Reset -->
+		<link rel="stylesheet" media="all" href="/css/html5-merged.css" />
+		<!--[if IE]><link rel="stylesheet" href="/css/html5/patches/win-ie-all.css" /><![endif]-->
+		<!--[if IE 7]><link rel="stylesheet" href="/css/html5/patches/win-ie7.css" /><![endif]-->
+		<!--[if lt IE 7]><link rel="stylesheet" href="/css/html5/patches/win-ie-old.css" /><![endif]-->
+		<!--[if lt IE 8]><script src="http://ie7-js.googlecode.com/svn/version/2.0(beta3)/IE8.js"></script><![endif]-->
+		<!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<!-- HTML 5 Reset End -->
+
+	<!-- LESS Framework CSS -->
+		<link rel="stylesheet" media="all" href="/css/lessFramework.css"/>
+		<meta name="viewport" content="width=device-width; initial-scale=1"/>
+		<!-- Adding "maximum-scale=1" fixes the Mobile Safari auto-zoom bug: http://filamentgroup.com/examples/iosScaleBug/ -->
+	<!-- LESS Framework CSS End -->
+
     <title></title>
-    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/Site.css" rel="stylesheet" type="text/css" />
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
-    <form runat="server">
     <div class="page">
-        <div class="header">
-            <div class="title">
-                <h1>
-                    My ASP.NET Application
-                </h1>
-            </div>
+        <header>
+            <h1>Communticate</h1>
+            <p></p>
+            
             <div class="loginDisplay">
-                <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
-                    <AnonymousTemplate>
-                        [ <a href="~/Account/Login.aspx" ID="HeadLoginStatus" runat="server">Log In</a> ]
-                    </AnonymousTemplate>
-                    <LoggedInTemplate>
-                        Welcome <span class="bold"><asp:LoginName ID="HeadLoginName" runat="server" /></span>!
-                        [ <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Log Out" LogoutPageUrl="~/"/> ]
-                    </LoggedInTemplate>
-                </asp:LoginView>
+                [ <a href="~/Login/" ID="HeadLoginStatus" runat="server">Log In</a> ]
             </div>
-            <div class="clear hideSkiplink">
+
+            <nav>
                 <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
                     <Items>
-                        <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Home"/>
-                        <asp:MenuItem NavigateUrl="~/About.aspx" Text="About"/>
+                        <asp:MenuItem NavigateUrl="~/" Text="Home"/>
+                        <asp:MenuItem NavigateUrl="~/Login/" Text="Login"/>
                     </Items>
                 </asp:Menu>
-            </div>
-        </div>
-        <div class="main">
-            <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
-        </div>
-        <div class="clear">
-        </div>
-    </div>
-    <div class="footer">
+            </nav>
+        </header>
         
+        <div class="main">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+        </div>
+        <div class="clear"> </div>
     </div>
-    </form>
+    <footer>
+        
+
+    </footer>
+    
+    <!-- Grab Google CDN's jQuery. fall back to local if necessary -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script>	    !window.jQuery && document.write(unescape('%3Cscript src="/js/jquery-1.7.2.min.js"%3E%3C/script%3E'))</script>
+	<script src="/js/general.js"></script>
+
+    <asp:ContentPlaceHolder ID="ScriptContent" runat="server" />
 </body>
 </html>
