@@ -7,7 +7,7 @@ using SendGridMail.Transport;
 using SendGrid;
 using System.Net;
 using System.Net.Mail;
-//using System.Net.NetworkInformation
+using System.Configuration;
 
 
 namespace SendGrid
@@ -22,12 +22,13 @@ namespace SendGrid
         private String _from;
         private IEnumerable<String> _to;
 
-        public SmtpAPI(String username, String password, String from, IEnumerable<String> recipients)
+        public SmtpAPI(String username, String password, String from)
         {
-            _username = username;
-            _password = password;
+            _username = ConfigurationManager.AppSettings["SendGridUsername"];
+            _password = ConfigurationManager.AppSettings["SendGridPassword"];
             _from = from;
-            _to = recipients;
+            //_to = recipients;
+            
         }
 
         /// <summary>
@@ -356,16 +357,17 @@ namespace SendGrid
         /// This can be useful for sending out newsletters and/or other HTML formatted messages.
         /// http://docs.sendgrid.com/documentation/apps/email-templates/
         /// </summary>
-        public void EnableTemplateEmail()
+        public void SendWithTemplate(string toAddress, string subject)
         {
             //create a new message object
             var message = SendGridMail.SendGrid.GetInstance();
 
             //set the message recipients
-            foreach (string recipient in _to)
-            {
-                message.AddTo(recipient);
-            }
+            //foreach (string recipient in _to)
+            //{
+            //    message.AddTo(recipient);
+            //}
+            message.AddTo(toAddress);
 
             //set the sender
             message.From = new MailAddress(_from);
@@ -378,7 +380,7 @@ namespace SendGrid
             message.Text = "Hello World plain text";
 
             //set the message subject
-            message.Subject = "Hello World Template Test";
+            message.Subject = subject;
 
             //create an instance of the SMTP transport mechanism
             var transportInstance = SMTP.GetInstance(new NetworkCredential(_username, _password));
