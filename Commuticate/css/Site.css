@@ -90,8 +90,10 @@ first child of the left and right table columns */
 {
     width: 960px;
     background-color: #fff;
-    margin: 20px auto 0px auto;
+    margin: 20px auto 20px auto;
     border: 1px solid #496077;
+    border-radius: 5px;
+    
 }
 
 .header
@@ -102,6 +104,15 @@ first child of the left and right table columns */
     background: #4b6c9e;
     width: 100%;
 }
+.loginDisplay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 8px;
+     color: #fff;
+}
+
+.loginDisplay a { color: #fff;}
 
 .header h1
 {
@@ -119,14 +130,19 @@ first child of the left and right table columns */
     padding: 0px 12px;
     margin: 12px 8px 8px 8px;
     min-height: 420px;
+    position: relative;
 }
 
 .leftCol
 {
-    padding: 6px 0px;
-    margin: 12px 8px 8px 8px;
-    width: 200px;
     min-height: 200px;
+    padding: 6px;
+    position: absolute;
+    right: -250px;
+    width: 200px;
+    background-color: #fff;
+    border: solid 1px #496077;
+    border-radius: 5px;
 }
 
 .footer
@@ -250,30 +266,6 @@ div.accountInfo
     float: left;
     text-align: left;
     width: auto;
-}
-
-.loginDisplay
-{
-    font-size: 1.1em;
-    display: block;
-    text-align: right;
-    padding: 10px;
-    color: White;
-}
-
-.loginDisplay a:link
-{
-    color: white;
-}
-
-.loginDisplay a:visited
-{
-    color: white;
-}
-
-.loginDisplay a:hover
-{
-    color: white;
 }
 
 .failureNotification

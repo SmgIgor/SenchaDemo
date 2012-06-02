@@ -1,0 +1,6 @@
+C:\Users\jrosena\Documents\GitHub\SenchaDemo\Repository\bin\Debug\CommuticateRepository.dll.config
+C:\Users\jrosena\Documents\GitHub\SenchaDemo\Repository\bin\Debug\CommuticateRepository.dll
+C:\Users\jrosena\Documents\GitHub\SenchaDemo\Repository\bin\Debug\CommuticateRepository.pdb
+C:\Users\jrosena\Documents\GitHub\SenchaDemo\Repository\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\jrosena\Documents\GitHub\SenchaDemo\Repository\obj\Debug\CommuticateRepository.dll
+C:\Users\jrosena\Documents\GitHub\SenchaDemo\Repository\obj\Debug\CommuticateRepository.pdb

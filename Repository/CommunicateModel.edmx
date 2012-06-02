@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="CommunticateModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="CommunticateModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="CommunticateModelStoreContainer">
           <EntitySet Name="Commuter" EntityType="CommunticateModel.Store.Commuter" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="CommuterData" EntityType="CommunticateModel.Store.CommuterData" store:Type="Tables" Schema="dbo" />
@@ -79,6 +79,8 @@
           <Property Name="NotifyEmail" Type="bit" Nullable="false" />
           <Property Name="NotifySMS" Type="bit" Nullable="false" />
           <Property Name="NotifyTwitter" Type="bit" Nullable="false" />
+          <Property Name="RunOnce" Type="bit" Nullable="false" />
+          <Property Name="LastRun" Type="datetime" />
         </EntityType>
         <EntityType Name="Route">
           <Key>
@@ -189,8 +191,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CommunticateModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
@@ -275,6 +276,8 @@
           <Property Name="NotifySMS" Type="Boolean" Nullable="false" />
           <Property Name="NotifyTwitter" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Que" Relationship="CommunticateModel.FK__QueSchedu__QueId__32E0915F" FromRole="QueSchedule" ToRole="Que" />
+          <Property Type="Boolean" Name="RunOnce" Nullable="false" />
+          <Property Type="DateTime" Name="LastRun" />
         </EntityType>
         <EntityType Name="Route">
           <Key>
@@ -416,7 +419,9 @@
             <ScalarProperty Name="RouteGroupId" ColumnName="RouteGroupId" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="QueSchedules"><EntityTypeMapping TypeName="CommunticateModel.QueSchedule"><MappingFragment StoreEntitySet="QueSchedule">
-            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="LastRun" ColumnName="LastRun" />
+                <ScalarProperty Name="RunOnce" ColumnName="RunOnce" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
             <ScalarProperty Name="QueId" ColumnName="QueId" />
             <ScalarProperty Name="OnDays" ColumnName="OnDays" />
             <ScalarProperty Name="AtTime" ColumnName="AtTime" />

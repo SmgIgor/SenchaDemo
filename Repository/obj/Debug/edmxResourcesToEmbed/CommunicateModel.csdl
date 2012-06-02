@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CommunticateModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Commuters" EntityType="CommunticateModel.Commuter" />
+    <EntitySet Name="CommuterDatas" EntityType="CommunticateModel.CommuterData" />
+    <EntitySet Name="Ques" EntityType="CommunticateModel.Que" />
+    <EntitySet Name="QueSchedules" EntityType="CommunticateModel.QueSchedule" />
+    <EntitySet Name="Routes" EntityType="CommunticateModel.Route" />
+    <EntitySet Name="RouteGroups" EntityType="CommunticateModel.RouteGroup" />
+    <EntitySet Name="RouteGroupRoutes" EntityType="CommunticateModel.RouteGroupRoute" />
+    <AssociationSet Name="FK__CommuterD__Commu__31EC6D26" Association="CommunticateModel.FK__CommuterD__Commu__31EC6D26">
+      <End Role="Commuter" EntitySet="Commuters" />
+      <End Role="CommuterData" EntitySet="CommuterDatas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Route__CommuterI__36B12243" Association="CommunticateModel.FK__Route__CommuterI__36B12243">
+      <End Role="Commuter" EntitySet="Commuters" />
+      <End Role="Route" EntitySet="Routes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RouteGrou__Commu__35BCFE0A" Association="CommunticateModel.FK__RouteGrou__Commu__35BCFE0A">
+      <End Role="Commuter" EntitySet="Commuters" />
+      <End Role="RouteGroup" EntitySet="RouteGroups" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Que__RouteGroupI__37A5467C" Association="CommunticateModel.FK__Que__RouteGroupI__37A5467C">
+      <End Role="RouteGroup" EntitySet="RouteGroups" />
+      <End Role="Que" EntitySet="Ques" />
+    </AssociationSet>
+    <AssociationSet Name="FK__QueSchedu__QueId__32E0915F" Association="CommunticateModel.FK__QueSchedu__QueId__32E0915F">
+      <End Role="Que" EntitySet="Ques" />
+      <End Role="QueSchedule" EntitySet="QueSchedules" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RouteGrou__Route__33D4B598" Association="CommunticateModel.FK__RouteGrou__Route__33D4B598">
+      <End Role="RouteGroup" EntitySet="RouteGroups" />
+      <End Role="RouteGroupRoutes" EntitySet="RouteGroupRoutes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RouteGrou__Route__34C8D9D1" Association="CommunticateModel.FK__RouteGrou__Route__34C8D9D1">
+      <End Role="RouteGroup" EntitySet="RouteGroups" />
+      <End Role="RouteGroupRoutes" EntitySet="RouteGroupRoutes" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Commuter">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="FullName" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="CommuterDatas" Relationship="CommunticateModel.FK__CommuterD__Commu__31EC6D26" FromRole="Commuter" ToRole="CommuterData" />
+    <NavigationProperty Name="Routes" Relationship="CommunticateModel.FK__Route__CommuterI__36B12243" FromRole="Commuter" ToRole="Route" />
+    <NavigationProperty Name="RouteGroups" Relationship="CommunticateModel.FK__RouteGrou__Commu__35BCFE0A" FromRole="Commuter" ToRole="RouteGroup" />
+  </EntityType>
+  <EntityType Name="CommuterData">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CommuterId" Type="Int32" Nullable="false" />
+    <Property Name="DataType" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="DataValue" Type="String" Nullable="false" MaxLength="1000" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Commuter" Relationship="CommunticateModel.FK__CommuterD__Commu__31EC6D26" FromRole="CommuterData" ToRole="Commuter" />
+  </EntityType>
+  <EntityType Name="Que">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="RouteGroupId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="RouteGroup" Relationship="CommunticateModel.FK__Que__RouteGroupI__37A5467C" FromRole="Que" ToRole="RouteGroup" />
+    <NavigationProperty Name="QueSchedules" Relationship="CommunticateModel.FK__QueSchedu__QueId__32E0915F" FromRole="Que" ToRole="QueSchedule" />
+  </EntityType>
+  <EntityType Name="QueSchedule">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="QueId" Type="Int32" Nullable="false" />
+    <Property Name="OnDays" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="AtTime" Type="Time" Nullable="false" />
+    <Property Name="NotifyEmail" Type="Boolean" Nullable="false" />
+    <Property Name="NotifySMS" Type="Boolean" Nullable="false" />
+    <Property Name="NotifyTwitter" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Que" Relationship="CommunticateModel.FK__QueSchedu__QueId__32E0915F" FromRole="QueSchedule" ToRole="Que" />
+    <Property Type="Boolean" Name="RunOnce" Nullable="false" />
+    <Property Type="DateTime" Name="LastRun" />
+  </EntityType>
+  <EntityType Name="Route">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="CommuterId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Commuter" Relationship="CommunticateModel.FK__Route__CommuterI__36B12243" FromRole="Route" ToRole="Commuter" />
+  </EntityType>
+  <EntityType Name="RouteGroup">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="CommuterId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Commuter" Relationship="CommunticateModel.FK__RouteGrou__Commu__35BCFE0A" FromRole="RouteGroup" ToRole="Commuter" />
+    <NavigationProperty Name="Ques" Relationship="CommunticateModel.FK__Que__RouteGroupI__37A5467C" FromRole="RouteGroup" ToRole="Que" />
+    <NavigationProperty Name="RouteGroupRoutes" Relationship="CommunticateModel.FK__RouteGrou__Route__33D4B598" FromRole="RouteGroup" ToRole="RouteGroupRoutes" />
+    <NavigationProperty Name="RouteGroupRoutes1" Relationship="CommunticateModel.FK__RouteGrou__Route__34C8D9D1" FromRole="RouteGroup" ToRole="RouteGroupRoutes" />
+  </EntityType>
+  <EntityType Name="RouteGroupRoute">
+    <Key>
+      <PropertyRef Name="RouteGroupId" />
+      <PropertyRef Name="RouteId" />
+    </Key>
+    <Property Name="RouteGroupId" Type="Int32" Nullable="false" />
+    <Property Name="RouteId" Type="Int32" Nullable="false" />
+    <Property Name="Order" Type="Int32" />
+    <NavigationProperty Name="RouteGroup" Relationship="CommunticateModel.FK__RouteGrou__Route__33D4B598" FromRole="RouteGroupRoutes" ToRole="RouteGroup" />
+    <NavigationProperty Name="RouteGroup1" Relationship="CommunticateModel.FK__RouteGrou__Route__34C8D9D1" FromRole="RouteGroupRoutes" ToRole="RouteGroup" />
+  </EntityType>
+  <Association Name="FK__CommuterD__Commu__31EC6D26">
+    <End Role="Commuter" Type="CommunticateModel.Commuter" Multiplicity="1" />
+    <End Role="CommuterData" Type="CommunticateModel.CommuterData" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Commuter">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CommuterData">
+        <PropertyRef Name="CommuterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Route__CommuterI__36B12243">
+    <End Role="Commuter" Type="CommunticateModel.Commuter" Multiplicity="1" />
+    <End Role="Route" Type="CommunticateModel.Route" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Commuter">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Route">
+        <PropertyRef Name="CommuterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RouteGrou__Commu__35BCFE0A">
+    <End Role="Commuter" Type="CommunticateModel.Commuter" Multiplicity="1" />
+    <End Role="RouteGroup" Type="CommunticateModel.RouteGroup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Commuter">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RouteGroup">
+        <PropertyRef Name="CommuterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Que__RouteGroupI__37A5467C">
+    <End Role="RouteGroup" Type="CommunticateModel.RouteGroup" Multiplicity="1" />
+    <End Role="Que" Type="CommunticateModel.Que" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RouteGroup">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Que">
+        <PropertyRef Name="RouteGroupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__QueSchedu__QueId__32E0915F">
+    <End Role="Que" Type="CommunticateModel.Que" Multiplicity="1" />
+    <End Role="QueSchedule" Type="CommunticateModel.QueSchedule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Que">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="QueSchedule">
+        <PropertyRef Name="QueId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RouteGrou__Route__33D4B598">
+    <End Role="RouteGroup" Type="CommunticateModel.RouteGroup" Multiplicity="1" />
+    <End Role="RouteGroupRoutes" Type="CommunticateModel.RouteGroupRoute" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RouteGroup">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RouteGroupRoutes">
+        <PropertyRef Name="RouteGroupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RouteGrou__Route__34C8D9D1">
+    <End Role="RouteGroup" Type="CommunticateModel.RouteGroup" Multiplicity="1" />
+    <End Role="RouteGroupRoutes" Type="CommunticateModel.RouteGroupRoute" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RouteGroup">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RouteGroupRoutes">
+        <PropertyRef Name="RouteGroupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

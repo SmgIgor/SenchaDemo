@@ -5,6 +5,10 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
     
     <div class="form">
+        <asp:Panel runat="server" EnableViewState="False" Visible="False" CssClass="StatusMsg">
+            <asp:Literal ID="StatusMessageLiteral" runat="server" OnPreRender="StatusMessage_OnPreRender" />
+        </asp:Panel>
+
         <div class="elem">
             <label>Username:</label>
             <asp:TextBox ID="LoginUserName" runat="server" />
@@ -17,7 +21,7 @@
         
         <div class="elem">
             <label></label>
-            <asp:Button runat="server" ID="LoginButton" Text="Login"/>
+            <asp:Button runat="server" ID="LoginButton" Text="Login" OnClick="Login_Click"/>
         </div>
     </div>
 </asp:Content>

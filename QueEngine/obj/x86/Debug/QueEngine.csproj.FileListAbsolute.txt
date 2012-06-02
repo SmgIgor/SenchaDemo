@@ -1,0 +1,13 @@
+C:\Users\jrosena\Documents\GitHub\SenchaDemo\QueEngine\bin\Debug\CommuticateQueEngine.exe
+C:\Users\jrosena\Documents\GitHub\SenchaDemo\QueEngine\bin\Debug\CommuticateQueEngine.pdb
+C:\Users\jrosena\Documents\GitHub\SenchaDemo\QueEngine\bin\Debug\CommuticateRepository.dll
+C:\Users\jrosena\Documents\GitHub\SenchaDemo\QueEngine\bin\Debug\CommuticateRepository.pdb
+C:\Users\jrosena\Documents\GitHub\SenchaDemo\QueEngine\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\jrosena\Documents\GitHub\SenchaDemo\QueEngine\obj\x86\Debug\CommuticateQueEngine.exe
+C:\Users\jrosena\Documents\GitHub\SenchaDemo\QueEngine\obj\x86\Debug\CommuticateQueEngine.pdb
+C:\Users\jrosena\Documents\GitHub\SenchaDemo\QueEngine\bin\Debug\CommuticateQueEngine.exe.config
+C:\Users\jrosena\Documents\GitHub\SenchaDemo\QueEngine\bin\Debug\Common.Logging.dll
+C:\Users\jrosena\Documents\GitHub\SenchaDemo\QueEngine\bin\Debug\Quartz.dll
+C:\Users\jrosena\Documents\GitHub\SenchaDemo\QueEngine\bin\Debug\C5.dll
+C:\Users\jrosena\Documents\GitHub\SenchaDemo\QueEngine\bin\Debug\Quartz.pdb
+C:\Users\jrosena\Documents\GitHub\SenchaDemo\QueEngine\bin\Debug\Quartz.xml

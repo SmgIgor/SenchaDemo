@@ -821,7 +821,8 @@ namespace Commuticate.Repository
         /// <param name="notifyEmail">Initial value of the NotifyEmail property.</param>
         /// <param name="notifySMS">Initial value of the NotifySMS property.</param>
         /// <param name="notifyTwitter">Initial value of the NotifyTwitter property.</param>
-        public static QueSchedule CreateQueSchedule(global::System.Int32 id, global::System.Int32 queId, global::System.String onDays, global::System.TimeSpan atTime, global::System.Boolean notifyEmail, global::System.Boolean notifySMS, global::System.Boolean notifyTwitter)
+        /// <param name="runOnce">Initial value of the RunOnce property.</param>
+        public static QueSchedule CreateQueSchedule(global::System.Int32 id, global::System.Int32 queId, global::System.String onDays, global::System.TimeSpan atTime, global::System.Boolean notifyEmail, global::System.Boolean notifySMS, global::System.Boolean notifyTwitter, global::System.Boolean runOnce)
         {
             QueSchedule queSchedule = new QueSchedule();
             queSchedule.Id = id;
@@ -831,6 +832,7 @@ namespace Commuticate.Repository
             queSchedule.NotifyEmail = notifyEmail;
             queSchedule.NotifySMS = notifySMS;
             queSchedule.NotifyTwitter = notifyTwitter;
+            queSchedule.RunOnce = runOnce;
             return queSchedule;
         }
 
@@ -1007,6 +1009,54 @@ namespace Commuticate.Repository
         private global::System.Boolean _NotifyTwitter;
         partial void OnNotifyTwitterChanging(global::System.Boolean value);
         partial void OnNotifyTwitterChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean RunOnce
+        {
+            get
+            {
+                return _RunOnce;
+            }
+            set
+            {
+                OnRunOnceChanging(value);
+                ReportPropertyChanging("RunOnce");
+                _RunOnce = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("RunOnce");
+                OnRunOnceChanged();
+            }
+        }
+        private global::System.Boolean _RunOnce;
+        partial void OnRunOnceChanging(global::System.Boolean value);
+        partial void OnRunOnceChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> LastRun
+        {
+            get
+            {
+                return _LastRun;
+            }
+            set
+            {
+                OnLastRunChanging(value);
+                ReportPropertyChanging("LastRun");
+                _LastRun = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("LastRun");
+                OnLastRunChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _LastRun;
+        partial void OnLastRunChanging(Nullable<global::System.DateTime> value);
+        partial void OnLastRunChanged();
 
         #endregion
     

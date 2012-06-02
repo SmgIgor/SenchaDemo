@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CommunticateModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="Commuters">
+      <EntityTypeMapping TypeName="CommunticateModel.Commuter">
+        <MappingFragment StoreEntitySet="Commuter">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CommuterDatas">
+      <EntityTypeMapping TypeName="CommunticateModel.CommuterData">
+        <MappingFragment StoreEntitySet="CommuterData">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CommuterId" ColumnName="CommuterId" />
+          <ScalarProperty Name="DataType" ColumnName="DataType" />
+          <ScalarProperty Name="DataValue" ColumnName="DataValue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ques">
+      <EntityTypeMapping TypeName="CommunticateModel.Que">
+        <MappingFragment StoreEntitySet="Que">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="RouteGroupId" ColumnName="RouteGroupId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QueSchedules">
+      <EntityTypeMapping TypeName="CommunticateModel.QueSchedule">
+        <MappingFragment StoreEntitySet="QueSchedule">
+          <ScalarProperty Name="LastRun" ColumnName="LastRun" />
+          <ScalarProperty Name="RunOnce" ColumnName="RunOnce" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="QueId" ColumnName="QueId" />
+          <ScalarProperty Name="OnDays" ColumnName="OnDays" />
+          <ScalarProperty Name="AtTime" ColumnName="AtTime" />
+          <ScalarProperty Name="NotifyEmail" ColumnName="NotifyEmail" />
+          <ScalarProperty Name="NotifySMS" ColumnName="NotifySMS" />
+          <ScalarProperty Name="NotifyTwitter" ColumnName="NotifyTwitter" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Routes">
+      <EntityTypeMapping TypeName="CommunticateModel.Route">
+        <MappingFragment StoreEntitySet="Route">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CommuterId" ColumnName="CommuterId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RouteGroups">
+      <EntityTypeMapping TypeName="CommunticateModel.RouteGroup">
+        <MappingFragment StoreEntitySet="RouteGroup">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CommuterId" ColumnName="CommuterId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RouteGroupRoutes">
+      <EntityTypeMapping TypeName="CommunticateModel.RouteGroupRoute">
+        <MappingFragment StoreEntitySet="RouteGroupRoutes">
+          <ScalarProperty Name="RouteGroupId" ColumnName="RouteGroupId" />
+          <ScalarProperty Name="RouteId" ColumnName="RouteId" />
+          <ScalarProperty Name="Order" ColumnName="Order" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
