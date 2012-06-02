@@ -1,0 +1,14 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Commuticate.Que.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Entities" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;metadata=res://*/CommunicateModel.csdl|res://*/CommunicateModel.ssdl|res://*/CommunicateModel.msl;provider=System.Data.SqlClient;provider connection string=&amp;amp;quot;Data Source=174.143.132.215,4120;Initial Catalog=695207_smgclient;Persist Security Info=True;User ID=695207_tecknonerd;Password=smgPassword1;MultipleActiveResultSets=True&amp;amp;quot;&lt;/ConnectionString&gt;
+  &lt;ProviderName /&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">metadata=res://*/CommunicateModel.csdl|res://*/CommunicateModel.ssdl|res://*/CommunicateModel.msl;provider=System.Data.SqlClient;provider connection string=&amp;quot;Data Source=174.143.132.215,4120;Initial Catalog=695207_smgclient;Persist Security Info=True;User ID=695207_tecknonerd;Password=smgPassword1;MultipleActiveResultSets=True&amp;quot;</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
