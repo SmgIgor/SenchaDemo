@@ -3,7 +3,7 @@
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>
-<asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
+<asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">asdsads
     <h2>
         Welcome to ASP.NET!
     </h2>sss
