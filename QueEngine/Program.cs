@@ -22,7 +22,7 @@ namespace Commuticate.Que
 
             var queDay = DateTime.Now.ToString("ddd").ToUpperInvariant();
             var queLastRun = context.PreviousFireTimeUtc;
-            var queTimeEnd = context.NextFireTimeUtc;
+            var queTimeEnd = context.FireTimeUtc;
 
             using (var ent = new Commuticate.Repository.Entities())
             {
