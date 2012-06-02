@@ -1,0 +1,6 @@
+C:\Users\mpacker\Documents\GitHub\SenchaDemo\SendGridMail\bin\Debug\SendGridMail.dll
+C:\Users\mpacker\Documents\GitHub\SenchaDemo\SendGridMail\bin\Debug\SendGridMail.pdb
+C:\Users\mpacker\Documents\GitHub\SenchaDemo\SendGridMail\bin\Debug\CodeScales.Http.dll
+C:\Users\mpacker\Documents\GitHub\SenchaDemo\SendGridMail\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\mpacker\Documents\GitHub\SenchaDemo\SendGridMail\obj\Debug\SendGridMail.dll
+C:\Users\mpacker\Documents\GitHub\SenchaDemo\SendGridMail\obj\Debug\SendGridMail.pdb
