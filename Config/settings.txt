@@ -1,0 +1,23 @@
+Domain
+	smg.tecknonerd.com
+
+FTP
+	ftp.tecknonerd.com
+	username: smgclient
+	password: smgpassword
+	
+Database
+	Host: mssql1204.wc1\inst2
+	DB: 695207_smgclient
+	
+	Online Manage: https://mssql.dfw1-1.websitesettings.com/mla
+	SQL Server: 174.143.132.215,4120
+	username: 695207_tecknonerd
+	password: smgPassword1
+
+Email
+	http://webmail.tecknonerd.com
+	Pop/Smtp: mail.tecknonerd.com
+	Email: hackthemidwest@tecknonerd.com
+	Pass: fredthefish
+	
