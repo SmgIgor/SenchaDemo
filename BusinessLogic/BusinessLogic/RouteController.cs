@@ -1,15 +1,15 @@
 using System.Collections.Generic;
+using NUnit.Framework;
 
 namespace Logic
 {
     public class RouteController
     {
-        string _fromAddress, _toAddress;
+        private string[] _addresses;
 
-        public RouteController(string fromAddress, string toAddress)
+        public RouteController(string [] addresses)
         {
-            _fromAddress = fromAddress;
-            _toAddress = toAddress;
+            _addresses = addresses;
         }
 
         //	public bool HasIncidents
@@ -22,8 +22,25 @@ namespace Logic
 
         public List<Incident> GetIncidents()
         {
-            var route = new Route(_fromAddress,
-                                  _toAddress);
+            if (_addresses.Length == 2)
+            {
+                return GetIncidents(_addresses[0], _addresses[1]);
+            }
+
+            var incidents = new List<Incident>();
+
+            for(int i = 0; i < _addresses.Length - 1; i++)
+            {
+                incidents.AddRange(GetIncidents(_addresses[i], _addresses[i + 1]));
+            }
+
+            return incidents;
+        }
+
+        private List<Incident> GetIncidents(string fromAddress, string toAddress)
+        {
+            var route = new Route(fromAddress,
+                                  toAddress);
 
             var points = route.GetRoutePoints();
 
@@ -56,6 +73,41 @@ namespace Logic
             }
 
             return incidentsOnTheRoute;
+        }
+
+
+    }
+
+    [TestFixture]
+    public class AddressTests
+    {
+        [Test]
+        public void CanGetIncidentsForTwoAddresses()
+        {
+            var addresses = new []
+                                {
+                                    "11127 W 108th Overland Park KS 66210",
+                                    "103 E 28th St Kansas City MO 64108"
+                                };
+            var controller = new RouteController(addresses);
+            var incidents = controller.GetIncidents();
+
+            Assert.Greater(incidents.Count, 0);
+        }
+
+        [Test]
+        public void CanGetIncidentsForThreeAddresses()
+        {
+            var addresses = new[]
+                                {
+                                    "11127 W 108th Overland Park KS 66210",
+                                    "103 E 28th St Kansas City MO 64108",
+                                    "1737 McGee Street Kansas City MO 64108"
+                                };
+            var controller = new RouteController(addresses);
+            var incidents = controller.GetIncidents();
+
+            Assert.Greater(incidents.Count, 0);
         }
     }
 }
