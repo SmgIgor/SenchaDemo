@@ -27,7 +27,6 @@ public partial class Commute_View_Default : System.Web.UI.Page
             var grp = elm.RouteGroups.FirstOrDefault(g => g.Id == this.RouteGroupId);
             if (grp != null)
             {
-
                 var rIds = (from rgr in grp.RouteGroupRoutes select rgr.RouteId);
 
                 var rout = elm.Routes.Where(r => rIds.Contains(r.Id));
@@ -36,7 +35,6 @@ public partial class Commute_View_Default : System.Web.UI.Page
                 this.RouteRepeater.DataBind();
             }            
         }
-
     }
 
     void Commute_View_Default_PreRender(object sender, EventArgs e)
