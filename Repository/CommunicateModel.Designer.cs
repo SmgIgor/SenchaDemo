@@ -23,8 +23,6 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("CommunticateModel", "FK__RouteGrou__Commu__35BCFE0A", "Commuter", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Commuticate.Repository.Commuter), "RouteGroup", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Commuticate.Repository.RouteGroup), true)]
 [assembly: EdmRelationshipAttribute("CommunticateModel", "FK__Que__RouteGroupI__37A5467C", "RouteGroup", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Commuticate.Repository.RouteGroup), "Que", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Commuticate.Repository.Que), true)]
 [assembly: EdmRelationshipAttribute("CommunticateModel", "FK__QueSchedu__QueId__32E0915F", "Que", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Commuticate.Repository.Que), "QueSchedule", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Commuticate.Repository.QueSchedule), true)]
-[assembly: EdmRelationshipAttribute("CommunticateModel", "FK__RouteGrou__Route__33D4B598", "RouteGroup", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Commuticate.Repository.RouteGroup), "RouteGroupRoutes", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Commuticate.Repository.RouteGroupRoute), true)]
-[assembly: EdmRelationshipAttribute("CommunticateModel", "FK__RouteGrou__Route__34C8D9D1", "RouteGroup", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Commuticate.Repository.RouteGroup), "RouteGroupRoutes", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Commuticate.Repository.RouteGroupRoute), true)]
 
 #endregion
 
@@ -1417,50 +1415,6 @@ namespace Commuticate.Repository
                 }
             }
         }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("CommunticateModel", "FK__RouteGrou__Route__33D4B598", "RouteGroupRoutes")]
-        public EntityCollection<RouteGroupRoute> RouteGroupRoutes
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<RouteGroupRoute>("CommunticateModel.FK__RouteGrou__Route__33D4B598", "RouteGroupRoutes");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<RouteGroupRoute>("CommunticateModel.FK__RouteGrou__Route__33D4B598", "RouteGroupRoutes", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("CommunticateModel", "FK__RouteGrou__Route__34C8D9D1", "RouteGroupRoutes")]
-        public EntityCollection<RouteGroupRoute> RouteGroupRoutes1
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<RouteGroupRoute>("CommunticateModel.FK__RouteGrou__Route__34C8D9D1", "RouteGroupRoutes");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<RouteGroupRoute>("CommunticateModel.FK__RouteGrou__Route__34C8D9D1", "RouteGroupRoutes", value);
-                }
-            }
-        }
 
         #endregion
     }
@@ -1571,85 +1525,6 @@ namespace Commuticate.Repository
 
         #endregion
     
-        #region Navigation Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("CommunticateModel", "FK__RouteGrou__Route__33D4B598", "RouteGroup")]
-        public RouteGroup RouteGroup
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<RouteGroup>("CommunticateModel.FK__RouteGrou__Route__33D4B598", "RouteGroup").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<RouteGroup>("CommunticateModel.FK__RouteGrou__Route__33D4B598", "RouteGroup").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<RouteGroup> RouteGroupReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<RouteGroup>("CommunticateModel.FK__RouteGrou__Route__33D4B598", "RouteGroup");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<RouteGroup>("CommunticateModel.FK__RouteGrou__Route__33D4B598", "RouteGroup", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("CommunticateModel", "FK__RouteGrou__Route__34C8D9D1", "RouteGroup")]
-        public RouteGroup RouteGroup1
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<RouteGroup>("CommunticateModel.FK__RouteGrou__Route__34C8D9D1", "RouteGroup").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<RouteGroup>("CommunticateModel.FK__RouteGrou__Route__34C8D9D1", "RouteGroup").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<RouteGroup> RouteGroup1Reference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<RouteGroup>("CommunticateModel.FK__RouteGrou__Route__34C8D9D1", "RouteGroup");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<RouteGroup>("CommunticateModel.FK__RouteGrou__Route__34C8D9D1", "RouteGroup", value);
-                }
-            }
-        }
-
-        #endregion
     }
 
     #endregion

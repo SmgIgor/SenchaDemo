@@ -17,7 +17,7 @@
        
        <asp:Repeater runat="server" ID="RouteRepeater">
            <ItemTemplate>
-               <div> <a href='<% String.Format("/Commute/Route/?id={0}&gid={1}", Eval("ID"), Eval("RouteGroupID")); %>'><%# Eval("Description") %></a></div>
+               <div> <a href='<%# String.Format("/Commute/Route/?id={0}&gid={1}", Eval("ID"), Eval("RouteGroupID")) %>'><%# Eval("Description") %></a></div>
            </ItemTemplate>
 
        </asp:Repeater>

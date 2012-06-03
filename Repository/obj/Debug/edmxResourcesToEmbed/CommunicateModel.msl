@@ -46,11 +46,11 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Routes">
-      <EntityTypeMapping TypeName="CommunticateModel.Route">
+      <EntityTypeMapping TypeName="IsTypeOf(CommunticateModel.Route)">
         <MappingFragment StoreEntitySet="Route">
           <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="CommuterId" ColumnName="CommuterId" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -60,15 +60,6 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="CommuterId" ColumnName="CommuterId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="RouteGroupRoutes">
-      <EntityTypeMapping TypeName="CommunticateModel.RouteGroupRoute">
-        <MappingFragment StoreEntitySet="RouteGroupRoutes">
-          <ScalarProperty Name="RouteGroupId" ColumnName="RouteGroupId" />
-          <ScalarProperty Name="RouteId" ColumnName="RouteId" />
-          <ScalarProperty Name="Order" ColumnName="Order" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

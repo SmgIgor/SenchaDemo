@@ -7,7 +7,6 @@
     <EntitySet Name="QueSchedules" EntityType="CommunticateModel.QueSchedule" />
     <EntitySet Name="Routes" EntityType="CommunticateModel.Route" />
     <EntitySet Name="RouteGroups" EntityType="CommunticateModel.RouteGroup" />
-    <EntitySet Name="RouteGroupRoutes" EntityType="CommunticateModel.RouteGroupRoute" />
     <AssociationSet Name="FK__CommuterD__Commu__31EC6D26" Association="CommunticateModel.FK__CommuterD__Commu__31EC6D26">
       <End Role="Commuter" EntitySet="Commuters" />
       <End Role="CommuterData" EntitySet="CommuterDatas" />
@@ -27,14 +26,6 @@
     <AssociationSet Name="FK__QueSchedu__QueId__32E0915F" Association="CommunticateModel.FK__QueSchedu__QueId__32E0915F">
       <End Role="Que" EntitySet="Ques" />
       <End Role="QueSchedule" EntitySet="QueSchedules" />
-    </AssociationSet>
-    <AssociationSet Name="FK__RouteGrou__Route__33D4B598" Association="CommunticateModel.FK__RouteGrou__Route__33D4B598">
-      <End Role="RouteGroup" EntitySet="RouteGroups" />
-      <End Role="RouteGroupRoutes" EntitySet="RouteGroupRoutes" />
-    </AssociationSet>
-    <AssociationSet Name="FK__RouteGrou__Route__34C8D9D1" Association="CommunticateModel.FK__RouteGrou__Route__34C8D9D1">
-      <End Role="RouteGroup" EntitySet="RouteGroups" />
-      <End Role="RouteGroupRoutes" EntitySet="RouteGroupRoutes" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Commuter">
@@ -102,19 +93,6 @@
     <Property Name="CommuterId" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Commuter" Relationship="CommunticateModel.FK__RouteGrou__Commu__35BCFE0A" FromRole="RouteGroup" ToRole="Commuter" />
     <NavigationProperty Name="Ques" Relationship="CommunticateModel.FK__Que__RouteGroupI__37A5467C" FromRole="RouteGroup" ToRole="Que" />
-    <NavigationProperty Name="RouteGroupRoutes" Relationship="CommunticateModel.FK__RouteGrou__Route__33D4B598" FromRole="RouteGroup" ToRole="RouteGroupRoutes" />
-    <NavigationProperty Name="RouteGroupRoutes1" Relationship="CommunticateModel.FK__RouteGrou__Route__34C8D9D1" FromRole="RouteGroup" ToRole="RouteGroupRoutes" />
-  </EntityType>
-  <EntityType Name="RouteGroupRoute">
-    <Key>
-      <PropertyRef Name="RouteGroupId" />
-      <PropertyRef Name="RouteId" />
-    </Key>
-    <Property Name="RouteGroupId" Type="Int32" Nullable="false" />
-    <Property Name="RouteId" Type="Int32" Nullable="false" />
-    <Property Name="Order" Type="Int32" />
-    <NavigationProperty Name="RouteGroup" Relationship="CommunticateModel.FK__RouteGrou__Route__33D4B598" FromRole="RouteGroupRoutes" ToRole="RouteGroup" />
-    <NavigationProperty Name="RouteGroup1" Relationship="CommunticateModel.FK__RouteGrou__Route__34C8D9D1" FromRole="RouteGroupRoutes" ToRole="RouteGroup" />
   </EntityType>
   <Association Name="FK__CommuterD__Commu__31EC6D26">
     <End Role="Commuter" Type="CommunticateModel.Commuter" Multiplicity="1" />
@@ -173,30 +151,6 @@
       </Principal>
       <Dependent Role="QueSchedule">
         <PropertyRef Name="QueId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__RouteGrou__Route__33D4B598">
-    <End Role="RouteGroup" Type="CommunticateModel.RouteGroup" Multiplicity="1" />
-    <End Role="RouteGroupRoutes" Type="CommunticateModel.RouteGroupRoute" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="RouteGroup">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="RouteGroupRoutes">
-        <PropertyRef Name="RouteGroupId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__RouteGrou__Route__34C8D9D1">
-    <End Role="RouteGroup" Type="CommunticateModel.RouteGroup" Multiplicity="1" />
-    <End Role="RouteGroupRoutes" Type="CommunticateModel.RouteGroupRoute" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="RouteGroup">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="RouteGroupRoutes">
-        <PropertyRef Name="RouteGroupId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

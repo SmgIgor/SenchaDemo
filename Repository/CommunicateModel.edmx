@@ -33,14 +33,6 @@
             <End Role="Commuter" EntitySet="Commuter" />
             <End Role="RouteGroup" EntitySet="RouteGroup" />
           </AssociationSet>
-          <AssociationSet Name="FK__RouteGrou__Route__33D4B598" Association="CommunticateModel.Store.FK__RouteGrou__Route__33D4B598">
-            <End Role="RouteGroup" EntitySet="RouteGroup" />
-            <End Role="RouteGroupRoutes" EntitySet="RouteGroupRoutes" />
-          </AssociationSet>
-          <AssociationSet Name="FK__RouteGrou__Route__34C8D9D1" Association="CommunticateModel.Store.FK__RouteGrou__Route__34C8D9D1">
-            <End Role="RouteGroup" EntitySet="RouteGroup" />
-            <End Role="RouteGroupRoutes" EntitySet="RouteGroupRoutes" />
-          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Commuter">
           <Key>
@@ -167,30 +159,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__RouteGrou__Route__33D4B598">
-          <End Role="RouteGroup" Type="CommunticateModel.Store.RouteGroup" Multiplicity="1" />
-          <End Role="RouteGroupRoutes" Type="CommunticateModel.Store.RouteGroupRoutes" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="RouteGroup">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="RouteGroupRoutes">
-              <PropertyRef Name="RouteGroupId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__RouteGrou__Route__34C8D9D1">
-          <End Role="RouteGroup" Type="CommunticateModel.Store.RouteGroup" Multiplicity="1" />
-          <End Role="RouteGroupRoutes" Type="CommunticateModel.Store.RouteGroupRoutes" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="RouteGroup">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="RouteGroupRoutes">
-              <PropertyRef Name="RouteGroupId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -202,7 +170,6 @@
           <EntitySet Name="QueSchedules" EntityType="CommunticateModel.QueSchedule" />
           <EntitySet Name="Routes" EntityType="CommunticateModel.Route" />
           <EntitySet Name="RouteGroups" EntityType="CommunticateModel.RouteGroup" />
-          <EntitySet Name="RouteGroupRoutes" EntityType="CommunticateModel.RouteGroupRoute" />
           <AssociationSet Name="FK__CommuterD__Commu__31EC6D26" Association="CommunticateModel.FK__CommuterD__Commu__31EC6D26">
             <End Role="Commuter" EntitySet="Commuters" />
             <End Role="CommuterData" EntitySet="CommuterDatas" />
@@ -223,15 +190,8 @@
             <End Role="Que" EntitySet="Ques" />
             <End Role="QueSchedule" EntitySet="QueSchedules" />
           </AssociationSet>
-          <AssociationSet Name="FK__RouteGrou__Route__33D4B598" Association="CommunticateModel.FK__RouteGrou__Route__33D4B598">
-            <End Role="RouteGroup" EntitySet="RouteGroups" />
-            <End Role="RouteGroupRoutes" EntitySet="RouteGroupRoutes" />
-          </AssociationSet>
-          <AssociationSet Name="FK__RouteGrou__Route__34C8D9D1" Association="CommunticateModel.FK__RouteGrou__Route__34C8D9D1">
-            <End Role="RouteGroup" EntitySet="RouteGroups" />
-            <End Role="RouteGroupRoutes" EntitySet="RouteGroupRoutes" />
-          </AssociationSet>
-        </EntityContainer>
+          <EntitySet Name="RouteGroupRoutes" EntityType="CommunticateModel.RouteGroupRoute" />
+          </EntityContainer>
         <EntityType Name="Commuter">
           <Key>
             <PropertyRef Name="Id" />
@@ -297,19 +257,6 @@
           <Property Name="CommuterId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Commuter" Relationship="CommunticateModel.FK__RouteGrou__Commu__35BCFE0A" FromRole="RouteGroup" ToRole="Commuter" />
           <NavigationProperty Name="Ques" Relationship="CommunticateModel.FK__Que__RouteGroupI__37A5467C" FromRole="RouteGroup" ToRole="Que" />
-          <NavigationProperty Name="RouteGroupRoutes" Relationship="CommunticateModel.FK__RouteGrou__Route__33D4B598" FromRole="RouteGroup" ToRole="RouteGroupRoutes" />
-          <NavigationProperty Name="RouteGroupRoutes1" Relationship="CommunticateModel.FK__RouteGrou__Route__34C8D9D1" FromRole="RouteGroup" ToRole="RouteGroupRoutes" />
-        </EntityType>
-        <EntityType Name="RouteGroupRoute">
-          <Key>
-            <PropertyRef Name="RouteGroupId" />
-            <PropertyRef Name="RouteId" />
-          </Key>
-          <Property Name="RouteGroupId" Type="Int32" Nullable="false" />
-          <Property Name="RouteId" Type="Int32" Nullable="false" />
-          <Property Name="Order" Type="Int32" />
-          <NavigationProperty Name="RouteGroup" Relationship="CommunticateModel.FK__RouteGrou__Route__33D4B598" FromRole="RouteGroupRoutes" ToRole="RouteGroup" />
-          <NavigationProperty Name="RouteGroup1" Relationship="CommunticateModel.FK__RouteGrou__Route__34C8D9D1" FromRole="RouteGroupRoutes" ToRole="RouteGroup" />
         </EntityType>
         <Association Name="FK__CommuterD__Commu__31EC6D26">
           <End Role="Commuter" Type="CommunticateModel.Commuter" Multiplicity="1" />
@@ -371,30 +318,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__RouteGrou__Route__33D4B598">
-          <End Role="RouteGroup" Type="CommunticateModel.RouteGroup" Multiplicity="1" />
-          <End Role="RouteGroupRoutes" Type="CommunticateModel.RouteGroupRoute" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="RouteGroup">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="RouteGroupRoutes">
-              <PropertyRef Name="RouteGroupId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__RouteGrou__Route__34C8D9D1">
-          <End Role="RouteGroup" Type="CommunticateModel.RouteGroup" Multiplicity="1" />
-          <End Role="RouteGroupRoutes" Type="CommunticateModel.RouteGroupRoute" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="RouteGroup">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="RouteGroupRoutes">
-              <PropertyRef Name="RouteGroupId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
+        <EntityType Name="RouteGroupRoute">
+          <Key>
+            <PropertyRef Name="RouteGroupId" />
+            <PropertyRef Name="RouteId" />
+          </Key>
+          <Property Type="Int32" Name="RouteGroupId" Nullable="false" />
+          <Property Type="Int32" Name="RouteId" Nullable="false" />
+          <Property Type="Int32" Name="Order" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -429,22 +361,30 @@
             <ScalarProperty Name="NotifySMS" ColumnName="NotifySMS" />
             <ScalarProperty Name="NotifyTwitter" ColumnName="NotifyTwitter" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="Routes"><EntityTypeMapping TypeName="CommunticateModel.Route"><MappingFragment StoreEntitySet="Route">
-            <ScalarProperty Name="Id" ColumnName="Id" />
-            <ScalarProperty Name="Description" ColumnName="Description" />
-            <ScalarProperty Name="CommuterId" ColumnName="CommuterId" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Routes">
+            <EntityTypeMapping TypeName="IsTypeOf(CommunticateModel.Route)">
+              <MappingFragment StoreEntitySet="Route">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CommuterId" ColumnName="CommuterId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            </EntitySetMapping>
           <EntitySetMapping Name="RouteGroups"><EntityTypeMapping TypeName="CommunticateModel.RouteGroup"><MappingFragment StoreEntitySet="RouteGroup">
             <ScalarProperty Name="Id" ColumnName="Id" />
             <ScalarProperty Name="Description" ColumnName="Description" />
             <ScalarProperty Name="CommuterId" ColumnName="CommuterId" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="RouteGroupRoutes"><EntityTypeMapping TypeName="CommunticateModel.RouteGroupRoute"><MappingFragment StoreEntitySet="RouteGroupRoutes">
-            <ScalarProperty Name="RouteGroupId" ColumnName="RouteGroupId" />
-            <ScalarProperty Name="RouteId" ColumnName="RouteId" />
-            <ScalarProperty Name="Order" ColumnName="Order" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-        </EntityContainerMapping>
+          <EntitySetMapping Name="RouteGroupRoutes">
+            <EntityTypeMapping TypeName="CommunticateModel.RouteGroupRoute">
+              <MappingFragment StoreEntitySet="RouteGroupRoutes">
+                <ScalarProperty Name="Order" ColumnName="Order" />
+                <ScalarProperty Name="RouteId" ColumnName="RouteId" />
+                <ScalarProperty Name="RouteGroupId" ColumnName="RouteGroupId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>
@@ -469,17 +409,16 @@
         <EntityTypeShape EntityType="CommunticateModel.CommuterData" Width="1.5" PointX="3" PointY="1.375" Height="1.9802864583333335" IsExpanded="true" />
         <EntityTypeShape EntityType="CommunticateModel.Que" Width="1.5" PointX="5.25" PointY="6.875" Height="1.9802864583333317" IsExpanded="true" />
         <EntityTypeShape EntityType="CommunticateModel.QueSchedule" Width="1.5" PointX="7.5" PointY="6.625" Height="2.5571907552083317" IsExpanded="true" />
-        <EntityTypeShape EntityType="CommunticateModel.Route" Width="1.5" PointX="3" PointY="4.125" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="CommunticateModel.Route" Width="1.5" PointX="10.375" PointY="6.375" Height="1.7879850260416674" IsExpanded="true" />
         <EntityTypeShape EntityType="CommunticateModel.RouteGroup" Width="2" PointX="2.75" PointY="8.125" Height="2.3648893229166674" IsExpanded="true" />
-        <EntityTypeShape EntityType="CommunticateModel.RouteGroupRoute" Width="1.5" PointX="6.125" PointY="10.375" Height="1.9802864583333317" IsExpanded="true" />
         <AssociationConnector Association="CommunticateModel.FK__CommuterD__Commu__31EC6D26" ManuallyRouted="false">
           <ConnectorPoint PointX="1.5" PointY="5.5" />
           <ConnectorPoint PointX="1.5" PointY="2.3651432291666667" />
           <ConnectorPoint PointX="3" PointY="2.3651432291666667" />
         </AssociationConnector>
         <AssociationConnector Association="CommunticateModel.FK__Route__CommuterI__36B12243" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="5.7064925130208337" />
-          <ConnectorPoint PointX="3" PointY="5.7064925130208337" />
+          <ConnectorPoint PointX="2.25" PointY="6.46875" />
+          <ConnectorPoint PointX="10.375" PointY="6.46875" />
         </AssociationConnector>
         <AssociationConnector Association="CommunticateModel.FK__RouteGrou__Commu__35BCFE0A" ManuallyRouted="false">
           <ConnectorPoint PointX="2.25" PointY="7.8648893229166674" />
@@ -493,19 +432,8 @@
           <ConnectorPoint PointX="6.75" PointY="7.8651432291666659" />
           <ConnectorPoint PointX="7.5" PointY="7.8651432291666659" />
         </AssociationConnector>
-        <AssociationConnector Association="CommunticateModel.FK__RouteGrou__Route__33D4B598" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.75" PointY="10.002146309895835" />
-          <ConnectorPoint PointX="6.8541641666666671" PointY="10.002146309895835" />
-          <ConnectorPoint PointX="7.0208308333333331" PointY="10.002146309895835" />
-          <ConnectorPoint PointX="7.125" PointY="10.002146309895835" />
-          <ConnectorPoint PointX="7.125" PointY="10.375" />
-        </AssociationConnector>
-        <AssociationConnector Association="CommunticateModel.FK__RouteGrou__Route__34C8D9D1" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.75" PointY="9.78446746484375" />
-          <ConnectorPoint PointX="6.9374975" PointY="9.78446746484375" />
-          <ConnectorPoint PointX="6.9374975" PointY="10.375" />
-        </AssociationConnector>
-      </Diagram>
+        <EntityTypeShape EntityType="CommunticateModel.RouteGroupRoute" Width="1.5" PointX="9.75" PointY="9.75" Height="1.5956835937499996" />
+        </Diagram>
     </Diagrams>
   </Designer>
 </edmx:Edmx>
