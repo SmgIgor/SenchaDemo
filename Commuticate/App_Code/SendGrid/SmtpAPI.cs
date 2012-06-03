@@ -28,8 +28,44 @@ namespace SendGrid
             _password = ConfigurationManager.AppSettings["SendGridPassword"];
             _from = from;
             //_to = recipients;
-            
         }
+
+        /// <summary>
+        /// This feature wraps an HTML template around your email content. 
+        /// This can be useful for sending out newsletters and/or other HTML formatted messages.
+        /// http://docs.sendgrid.com/documentation/apps/email-templates/
+        /// </summary>
+        public void SendWithTemplate(string toAddress, string recipientName, string subject, string routeLink)
+        {
+            //create a new message object
+            var message = SendGridMail.SendGrid.GetInstance();
+
+            //set the message attributes
+            message.AddTo(toAddress);
+            message.From = new MailAddress(_from);
+            message.Subject = subject;
+            message.Html = "Hi %Name%, your optimal route is available <a href='%link%'>here</a>!<br />";
+            message.Html += "Running late?  Click <a href='%link%&refresh=true'>here</a> to refresh.";
+
+            //set substitution values
+            var replacementKey = "%Name%";
+
+            //There should be one value for each recipient in the To list
+            var substitutionValues = new List<String> { recipientName };
+            message.AddSubVal(replacementKey, substitutionValues);
+
+            //repeat for each substitution key/value
+            replacementKey = "%link%";
+            substitutionValues = new List<string> { routeLink };
+            message.AddSubVal(replacementKey, substitutionValues);
+
+            //create an instance of the SMTP transport mechanism
+            var transportInstance = SMTP.GetInstance(new NetworkCredential(_username, _password));
+
+            //send the mail
+            transportInstance.Deliver(message);
+        }
+
 
         /// <summary>
         /// Send a simple HTML based email
@@ -352,46 +388,7 @@ namespace SendGrid
             transportInstance.Deliver(message);
         }
 
-        /// <summary>
-        /// This feature wraps an HTML template around your email content. 
-        /// This can be useful for sending out newsletters and/or other HTML formatted messages.
-        /// http://docs.sendgrid.com/documentation/apps/email-templates/
-        /// </summary>
-        public void SendWithTemplate(string toAddress, string subject)
-        {
-            //create a new message object
-            var message = SendGridMail.SendGrid.GetInstance();
-
-            //set the message recipients
-            //foreach (string recipient in _to)
-            //{
-            //    message.AddTo(recipient);
-            //}
-            message.AddTo(toAddress);
-
-            //set the sender
-            message.From = new MailAddress(_from);
-
-            //set the message body
-            var timestamp = DateTime.Now.ToString("HH:mm:ss tt");
-            message.Html = "<p style='color:red';>Hello World</p>";
-            message.Html += "<p>Sent At : " + timestamp + "</p>";
-
-            message.Text = "Hello World plain text";
-
-            //set the message subject
-            message.Subject = subject;
-
-            //create an instance of the SMTP transport mechanism
-            var transportInstance = SMTP.GetInstance(new NetworkCredential(_username, _password));
-
-            //enable template
-            message.EnableTemplate("<p>My Email Template <% body %> is awesome!</p>");
-
-            //send the mail
-            transportInstance.Deliver(message);
-        }
-
+       
         /// <summary>
         /// This feature wraps an HTML template around your email content. 
         /// This can be useful for sending out newsletters and/or other HTML formatted messages.
