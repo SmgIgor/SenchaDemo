@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using NUnit.Framework;
 
 namespace Logic
@@ -76,6 +77,13 @@ namespace Logic
         }
 
 
+        public void SuggestAlternateRoute(long[] linkToAvoid)
+        {
+            var route = new Route(_addresses[0],                // TODO: Igor, add support for multiple waypoints
+                      _addresses[1]);
+
+            var someString = route.GetAlternateRoute(linkToAvoid);
+        }
     }
 
     [TestFixture]
@@ -108,6 +116,24 @@ namespace Logic
             var incidents = controller.GetIncidents();
 
             Assert.Greater(incidents.Count, 0);
+        }
+
+        [Test]
+        public void CanSuggestAlternateRoute()
+        {
+            var addresses = new[]
+                                {
+                                    "11127 W 108th Overland Park KS 66210",
+                                    "103 E 28th St Kansas City MO 64108",
+                                    "1737 McGee Street Kansas City MO 64108"
+                                };
+            var controller = new RouteController(addresses);
+            var incidents = controller.GetIncidents();
+
+            var linkIds = from i in incidents
+                          select i.LinkId;
+
+            controller.SuggestAlternateRoute(linkIds.ToArray());
         }
     }
 }

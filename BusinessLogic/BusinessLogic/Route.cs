@@ -12,12 +12,17 @@ namespace Logic
 
         private string _rawData;
 
+        private long[] MustAvoid;
+
         public string Url
         {
             get
             {
                 return "http://www.mapquestapi.com/directions/v1/route/" +
                        "?key=Fmjtd%7Cluua2d08nq%2Ca5%3Do5-hf25h" +
+                       (MustAvoid != null
+                       ? string.Format("&mustAvoidLinkIds{0}", MustAvoid.Aggregate("", (s, l) => s + (string.IsNullOrEmpty(s) ? l.ToString() : "," + l.ToString())))
+                           : string.Empty) +
                        string.Format("&from={0}", HttpUtility.UrlEncode(FromAddress)) +
                        string.Format("&to={0}", HttpUtility.UrlEncode(ToAddress)) +
                        "&generalize=0";
@@ -92,6 +97,15 @@ namespace Logic
             box.LowerRight.Lon = double.Parse(((Dictionary<string, object>)boxData["lr"])["lng"].ToString());
 
             return box;
+        }
+
+        public string GetAlternateRoute(long [] avoids)
+        {
+            MustAvoid = avoids;
+            _rawData = null;
+            var url = Url;
+            var data = RawData;
+            return "some string";
         }
 
         //public Lis

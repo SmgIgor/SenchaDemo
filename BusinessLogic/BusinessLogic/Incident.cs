@@ -5,5 +5,6 @@ namespace Logic
         public RoutePoint Location { get; set; }
         public string ShortDescription { get; set; }
         public string FullDescriptoin { get; set; }
+        public long LinkId { get; set; }
     }
 }

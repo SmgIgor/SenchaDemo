@@ -66,7 +66,7 @@ namespace Logic
                                             };
                     incident.ShortDescription = incidentDic["shortDesc"].ToString();
                     incident.FullDescriptoin = incidentDic["fullDesc"].ToString();
-
+                    incident.LinkId = long.Parse(incidentDic["id"].ToString());
                     incidentsList.Add(incident);
                 }
             }
