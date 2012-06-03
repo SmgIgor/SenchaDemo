@@ -23,6 +23,7 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("CommunticateModel", "FK__RouteGrou__Commu__35BCFE0A", "Commuter", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Commuticate.Repository.Commuter), "RouteGroup", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Commuticate.Repository.RouteGroup), true)]
 [assembly: EdmRelationshipAttribute("CommunticateModel", "FK__Que__RouteGroupI__37A5467C", "RouteGroup", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Commuticate.Repository.RouteGroup), "Que", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Commuticate.Repository.Que), true)]
 [assembly: EdmRelationshipAttribute("CommunticateModel", "FK__QueSchedu__QueId__32E0915F", "Que", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Commuticate.Repository.Que), "QueSchedule", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Commuticate.Repository.QueSchedule), true)]
+[assembly: EdmRelationshipAttribute("CommunticateModel", "FK__RouteGrou__Route__47DBAE45", "RouteGroup", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Commuticate.Repository.RouteGroup), "RouteGroupRoute", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Commuticate.Repository.RouteGroupRoute), true)]
 
 #endregion
 
@@ -1415,6 +1416,28 @@ namespace Commuticate.Repository
                 }
             }
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("CommunticateModel", "FK__RouteGrou__Route__47DBAE45", "RouteGroupRoute")]
+        public EntityCollection<RouteGroupRoute> RouteGroupRoutes
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<RouteGroupRoute>("CommunticateModel.FK__RouteGrou__Route__47DBAE45", "RouteGroupRoute");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<RouteGroupRoute>("CommunticateModel.FK__RouteGrou__Route__47DBAE45", "RouteGroupRoute", value);
+                }
+            }
+        }
 
         #endregion
     }
@@ -1525,6 +1548,47 @@ namespace Commuticate.Repository
 
         #endregion
     
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("CommunticateModel", "FK__RouteGrou__Route__47DBAE45", "RouteGroup")]
+        public RouteGroup RouteGroup
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<RouteGroup>("CommunticateModel.FK__RouteGrou__Route__47DBAE45", "RouteGroup").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<RouteGroup>("CommunticateModel.FK__RouteGrou__Route__47DBAE45", "RouteGroup").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<RouteGroup> RouteGroupReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<RouteGroup>("CommunticateModel.FK__RouteGrou__Route__47DBAE45", "RouteGroup");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<RouteGroup>("CommunticateModel.FK__RouteGrou__Route__47DBAE45", "RouteGroup", value);
+                }
+            }
+        }
+
+        #endregion
     }
 
     #endregion

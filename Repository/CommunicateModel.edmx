@@ -33,6 +33,10 @@
             <End Role="Commuter" EntitySet="Commuter" />
             <End Role="RouteGroup" EntitySet="RouteGroup" />
           </AssociationSet>
+          <AssociationSet Name="FK__RouteGrou__Route__47DBAE45" Association="CommunticateModel.Store.FK__RouteGrou__Route__47DBAE45">
+            <End Role="RouteGroup" EntitySet="RouteGroup" />
+            <End Role="RouteGroupRoutes" EntitySet="RouteGroupRoutes" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Commuter">
           <Key>
@@ -159,6 +163,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__RouteGrou__Route__47DBAE45">
+          <End Role="RouteGroup" Type="CommunticateModel.Store.RouteGroup" Multiplicity="1" />
+          <End Role="RouteGroupRoutes" Type="CommunticateModel.Store.RouteGroupRoutes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RouteGroup">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RouteGroupRoutes">
+              <PropertyRef Name="RouteGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -191,6 +207,10 @@
             <End Role="QueSchedule" EntitySet="QueSchedules" />
           </AssociationSet>
           <EntitySet Name="RouteGroupRoutes" EntityType="CommunticateModel.RouteGroupRoute" />
+          <AssociationSet Name="FK__RouteGrou__Route__47DBAE45" Association="CommunticateModel.FK__RouteGrou__Route__47DBAE45">
+            <End Role="RouteGroup" EntitySet="RouteGroups" />
+            <End Role="RouteGroupRoute" EntitySet="RouteGroupRoutes" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="Commuter">
           <Key>
@@ -257,6 +277,7 @@
           <Property Name="CommuterId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Commuter" Relationship="CommunticateModel.FK__RouteGrou__Commu__35BCFE0A" FromRole="RouteGroup" ToRole="Commuter" />
           <NavigationProperty Name="Ques" Relationship="CommunticateModel.FK__Que__RouteGroupI__37A5467C" FromRole="RouteGroup" ToRole="Que" />
+          <NavigationProperty Name="RouteGroupRoutes" Relationship="CommunticateModel.FK__RouteGrou__Route__47DBAE45" FromRole="RouteGroup" ToRole="RouteGroupRoute" />
         </EntityType>
         <Association Name="FK__CommuterD__Commu__31EC6D26">
           <End Role="Commuter" Type="CommunticateModel.Commuter" Multiplicity="1" />
@@ -326,7 +347,20 @@
           <Property Type="Int32" Name="RouteGroupId" Nullable="false" />
           <Property Type="Int32" Name="RouteId" Nullable="false" />
           <Property Type="Int32" Name="Order" />
+          <NavigationProperty Name="RouteGroup" Relationship="CommunticateModel.FK__RouteGrou__Route__47DBAE45" FromRole="RouteGroupRoute" ToRole="RouteGroup" />
         </EntityType>
+        <Association Name="FK__RouteGrou__Route__47DBAE45">
+          <End Type="CommunticateModel.RouteGroup" Role="RouteGroup" Multiplicity="1" />
+          <End Type="CommunticateModel.RouteGroupRoute" Role="RouteGroupRoute" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RouteGroup">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RouteGroupRoute">
+              <PropertyRef Name="RouteGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -432,7 +466,12 @@
           <ConnectorPoint PointX="6.75" PointY="7.8651432291666659" />
           <ConnectorPoint PointX="7.5" PointY="7.8651432291666659" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="CommunticateModel.RouteGroupRoute" Width="1.5" PointX="9.75" PointY="9.75" Height="1.5956835937499996" />
+        <EntityTypeShape EntityType="CommunticateModel.RouteGroupRoute" Width="1.5" PointX="5.5" PointY="10.375" Height="1.7879850260416674" />
+        <AssociationConnector Association="CommunticateModel.FK__RouteGrou__Route__47DBAE45" >
+          <ConnectorPoint PointX="4.75" PointY="9.6076871744791656" />
+          <ConnectorPoint PointX="6.90625" PointY="9.6076871744791656" />
+          <ConnectorPoint PointX="6.90625" PointY="10.375" />
+        </AssociationConnector>
         </Diagram>
     </Diagrams>
   </Designer>

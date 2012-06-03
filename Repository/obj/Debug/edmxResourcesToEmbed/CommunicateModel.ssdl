@@ -7,6 +7,7 @@
     <EntitySet Name="QueSchedule" EntityType="CommunticateModel.Store.QueSchedule" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Route" EntityType="CommunticateModel.Store.Route" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="RouteGroup" EntityType="CommunticateModel.Store.RouteGroup" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RouteGroupRoutes" EntityType="CommunticateModel.Store.RouteGroupRoutes" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="FK__CommuterD__Commu__31EC6D26" Association="CommunticateModel.Store.FK__CommuterD__Commu__31EC6D26">
       <End Role="Commuter" EntitySet="Commuter" />
       <End Role="CommuterData" EntitySet="CommuterData" />
@@ -26,6 +27,10 @@
     <AssociationSet Name="FK__RouteGrou__Commu__35BCFE0A" Association="CommunticateModel.Store.FK__RouteGrou__Commu__35BCFE0A">
       <End Role="Commuter" EntitySet="Commuter" />
       <End Role="RouteGroup" EntitySet="RouteGroup" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RouteGrou__Route__47DBAE45" Association="CommunticateModel.Store.FK__RouteGrou__Route__47DBAE45">
+      <End Role="RouteGroup" EntitySet="RouteGroup" />
+      <End Role="RouteGroupRoutes" EntitySet="RouteGroupRoutes" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Commuter">
@@ -84,6 +89,15 @@
     <Property Name="Description" Type="varchar" Nullable="false" MaxLength="200" />
     <Property Name="CommuterId" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="RouteGroupRoutes">
+    <Key>
+      <PropertyRef Name="RouteGroupId" />
+      <PropertyRef Name="RouteId" />
+    </Key>
+    <Property Name="RouteGroupId" Type="int" Nullable="false" />
+    <Property Name="RouteId" Type="int" Nullable="false" />
+    <Property Name="Order" Type="int" />
+  </EntityType>
   <Association Name="FK__CommuterD__Commu__31EC6D26">
     <End Role="Commuter" Type="CommunticateModel.Store.Commuter" Multiplicity="1" />
     <End Role="CommuterData" Type="CommunticateModel.Store.CommuterData" Multiplicity="*" />
@@ -141,6 +155,18 @@
       </Principal>
       <Dependent Role="RouteGroup">
         <PropertyRef Name="CommuterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RouteGrou__Route__47DBAE45">
+    <End Role="RouteGroup" Type="CommunticateModel.Store.RouteGroup" Multiplicity="1" />
+    <End Role="RouteGroupRoutes" Type="CommunticateModel.Store.RouteGroupRoutes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RouteGroup">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RouteGroupRoutes">
+        <PropertyRef Name="RouteGroupId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

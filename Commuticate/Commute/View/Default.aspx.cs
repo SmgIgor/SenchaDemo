@@ -28,9 +28,11 @@ public partial class Commute_View_Default : System.Web.UI.Page
             if (grp != null)
             {
 
-                var r = (from rgr in grp.RouteGroupRoutes select rgr.RouteId);
+                var rIds = (from rgr in grp.RouteGroupRoutes select rgr.RouteId);
 
-                this.RouteRepeater.DataSource = grp.RouteGroupRoutes;
+                var rout = elm.Routes.Where(r => rIds.Contains(r.Id));
+
+                this.RouteRepeater.DataSource = rout;
                 this.RouteRepeater.DataBind();
             }            
         }
