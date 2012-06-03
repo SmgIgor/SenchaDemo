@@ -31,30 +31,25 @@
 
     <title></title>
     <link href="~/css/Site.css" rel="stylesheet" type="text/css" />
-    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
-    </asp:ContentPlaceHolder>
+	<asp:ContentPlaceHolder ID="HeadContent" runat="server" />
 </head>
 <body>
-    <form runat="server">
-        
+    
+    <header class="header">
+            <h2>Why commute when you can <img src="/images/commuticate.png" alt="Communticate"/></h2>
+            
+            <nav>
+                 <asp:HyperLink runat="server" ID="LoginLink" NavigateUrl="~/Login/" OnPreRender="LoginLink_PreRender">Log In</asp:HyperLink>
+            </nav>
 
+            <asp:ContentPlaceHolder runat="server" ID="HeaderContent" />
+    </header>
 
     <div class="page">
-        <header class="header">
-            <h1>Communticate</h1>
-            <p></p>
-            
-            <div class="loginDisplay">
-                [ <a href="~/Login/" ID="HeadLoginStatus" runat="server">Log In</a> ]
-            </div>
-
-            <menu></menu>
-            
-            <asp:ContentPlaceHolder runat="server" ID="HeaderContent" />
-        </header>
-
         <div class="main">
-            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+            <form id="Form1" runat="server">
+                <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+            </form>
         </div>
     </div>
     
@@ -67,7 +62,6 @@
 	<script>	    !window.jQuery && document.write(unescape('%3Cscript src="/js/jquery-1.7.2.min.js"%3E%3C/script%3E'))</script>
 	<script src="/js/general.js"></script>
     
-    </form>
     <asp:ContentPlaceHolder ID="ScriptContent" runat="server" />
 </body>
 </html>

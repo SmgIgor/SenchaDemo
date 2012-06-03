@@ -3,7 +3,7 @@
 <div class="commuterInfo">
 <asp:Panel id="NewAccountPanel" runat="server" visible="True">
     <div class="form">
-        <header><h3>Create Account</h3></header>
+        <header><h2>Signup</h2></header>
 
         <div class="elem">
             <label>Name: <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="FullNameTextBox" ValidationGroup="CreateAccount" /></label>

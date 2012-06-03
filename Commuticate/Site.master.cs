@@ -11,4 +11,14 @@ public partial class SiteMaster : System.Web.UI.MasterPage
     {
 
     }
+
+    protected void LoginLink_PreRender(object sender, EventArgs e)
+    {
+        if (Program.UserLoggedIn)
+        {
+            this.LoginLink.Text = "Log Out";
+            this.LoginLink.NavigateUrl = "~/Logout/";
+        }
+    }
 }
+ 

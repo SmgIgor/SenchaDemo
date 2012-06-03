@@ -12,6 +12,14 @@ public partial class CommuterAccountWebControl : System.Web.UI.UserControl
         this.PreRender  += OnPreRender;
         this.AccountPanel.PreRender += new EventHandler(AccountPanel_PreRender);
 
+        if (!Page.IsPostBack)
+        {
+            this.BindUserDetails();
+        }
+    }
+
+    private void BindUserDetails()
+    {
         if (Program.UserLoggedIn)
         {
             using (var ent = new Commuticate.Repository.Entities())
@@ -49,8 +57,6 @@ public partial class CommuterAccountWebControl : System.Web.UI.UserControl
         
     }
 
-
-
     protected void CreateAccount_Click(object sender, EventArgs e)
     {
         using (var ent = new Commuticate.Repository.Entities())
@@ -63,5 +69,7 @@ public partial class CommuterAccountWebControl : System.Web.UI.UserControl
 
             Program.UserId = comm.Id;
         }
+
+        this.BindUserDetails();
     }
 }

@@ -470,8 +470,8 @@
         <EntityTypeShape EntityType="CommunticateModel.Que" Width="1.5" PointX="5.25" PointY="6.875" Height="1.9802864583333317" IsExpanded="true" />
         <EntityTypeShape EntityType="CommunticateModel.QueSchedule" Width="1.5" PointX="7.5" PointY="6.625" Height="2.5571907552083317" IsExpanded="true" />
         <EntityTypeShape EntityType="CommunticateModel.Route" Width="1.5" PointX="3" PointY="4.125" Height="1.7879850260416674" IsExpanded="true" />
-        <EntityTypeShape EntityType="CommunticateModel.RouteGroup" Width="1.5" PointX="3" PointY="8.125" Height="2.3648893229166674" IsExpanded="true" />
-        <EntityTypeShape EntityType="CommunticateModel.RouteGroupRoute" Width="1.5" PointX="5.25" PointY="9.875" Height="1.9802864583333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="CommunticateModel.RouteGroup" Width="2" PointX="2.75" PointY="8.125" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="CommunticateModel.RouteGroupRoute" Width="1.5" PointX="6.125" PointY="10.375" Height="1.9802864583333317" IsExpanded="true" />
         <AssociationConnector Association="CommunticateModel.FK__CommuterD__Commu__31EC6D26" ManuallyRouted="false">
           <ConnectorPoint PointX="1.5" PointY="5.5" />
           <ConnectorPoint PointX="1.5" PointY="2.3651432291666667" />
@@ -482,12 +482,11 @@
           <ConnectorPoint PointX="3" PointY="5.7064925130208337" />
         </AssociationConnector>
         <AssociationConnector Association="CommunticateModel.FK__RouteGrou__Commu__35BCFE0A" ManuallyRouted="false">
-          <ConnectorPoint PointX="1.5" PointY="7.8648893229166674" />
-          <ConnectorPoint PointX="1.5" PointY="9.3074446614583337" />
-          <ConnectorPoint PointX="3" PointY="9.3074446614583337" />
+          <ConnectorPoint PointX="2.25" PointY="7.8648893229166674" />
+          <ConnectorPoint PointX="2.75" PointY="8.125" />
         </AssociationConnector>
         <AssociationConnector Association="CommunticateModel.FK__Que__RouteGroupI__37A5467C" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="8.4901432291666659" />
+          <ConnectorPoint PointX="4.75" PointY="8.4901432291666659" />
           <ConnectorPoint PointX="5.25" PointY="8.4901432291666659" />
         </AssociationConnector>
         <AssociationConnector Association="CommunticateModel.FK__QueSchedu__QueId__32E0915F" ManuallyRouted="false">
@@ -495,12 +494,16 @@
           <ConnectorPoint PointX="7.5" PointY="7.8651432291666659" />
         </AssociationConnector>
         <AssociationConnector Association="CommunticateModel.FK__RouteGrou__Route__33D4B598" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="10.182444661458334" />
-          <ConnectorPoint PointX="5.25" PointY="10.182444661458334" />
+          <ConnectorPoint PointX="4.75" PointY="10.002146309895835" />
+          <ConnectorPoint PointX="6.8541641666666671" PointY="10.002146309895835" />
+          <ConnectorPoint PointX="7.0208308333333331" PointY="10.002146309895835" />
+          <ConnectorPoint PointX="7.125" PointY="10.002146309895835" />
+          <ConnectorPoint PointX="7.125" PointY="10.375" />
         </AssociationConnector>
         <AssociationConnector Association="CommunticateModel.FK__RouteGrou__Route__34C8D9D1" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="9.9662223307291669" />
-          <ConnectorPoint PointX="5.25" PointY="9.9662223307291669" />
+          <ConnectorPoint PointX="4.75" PointY="9.78446746484375" />
+          <ConnectorPoint PointX="6.9374975" PointY="9.78446746484375" />
+          <ConnectorPoint PointX="6.9374975" PointY="10.375" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

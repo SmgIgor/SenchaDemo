@@ -11,8 +11,8 @@ public partial class _Default : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        SendGrid.SmtpAPI sgEmail = new SmtpAPI("username", "password", "someone@sendgrid.com");
-        sgEmail.SendWithTemplate("mpacker@smg.com", "SendGrid Email Test");
+        //SendGrid.SmtpAPI sgEmail = new SmtpAPI("username", "password", "someone@sendgrid.com");
+        //sgEmail.SendWithTemplate("mpacker@smg.com", "SendGrid Email Test");
 
     }
 }
